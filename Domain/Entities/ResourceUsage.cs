@@ -9,7 +9,7 @@
         public int ResourceId { get; set; }
         public Resource Resource { get; set; }
 
-        public int ProjectId { get; set; }
-        public ConstructionProject Project { get; set; }
+        public int ProjectTaskId { get; set; }
+        public ProjectTask ProjectTask { get; set; }
     }
 }

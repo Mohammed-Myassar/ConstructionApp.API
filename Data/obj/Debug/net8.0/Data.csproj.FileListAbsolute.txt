@@ -15,3 +15,4 @@ C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solutio
 C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Data\bin\Debug\net8.0\Domain.dll
 C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Data\bin\Debug\net8.0\Domain.pdb
 C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Data\obj\Debug\net8.0\Data.csproj.Up2Date
+C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Data\obj\Debug\net8.0\Data.sourcelink.json

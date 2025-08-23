@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Initiall : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -121,17 +121,23 @@ namespace Data.Migrations
                     QuantityUsed = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     UsageDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ResourceId = table.Column<int>(type: "int", nullable: false),
-                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                    ProjectTaskId = table.Column<int>(type: "int", nullable: false),
+                    ConstructionProjectId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ResourceUsages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ResourceUsages_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
+                        name: "FK_ResourceUsages_ProjectTasks_ProjectTaskId",
+                        column: x => x.ProjectTaskId,
+                        principalTable: "ProjectTasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ResourceUsages_Projects_ConstructionProjectId",
+                        column: x => x.ConstructionProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ResourceUsages_Resources_ResourceId",
                         column: x => x.ResourceId,
@@ -156,9 +162,14 @@ namespace Data.Migrations
                 column: "ConstructionProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResourceUsages_ProjectId",
+                name: "IX_ResourceUsages_ConstructionProjectId",
                 table: "ResourceUsages",
-                column: "ProjectId");
+                column: "ConstructionProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResourceUsages_ProjectTaskId",
+                table: "ResourceUsages",
+                column: "ProjectTaskId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ResourceUsages_ResourceId",
@@ -176,16 +187,16 @@ namespace Data.Migrations
                 name: "PaymentTransactions");
 
             migrationBuilder.DropTable(
-                name: "ProjectTasks");
-
-            migrationBuilder.DropTable(
                 name: "ResourceUsages");
 
             migrationBuilder.DropTable(
-                name: "Projects");
+                name: "ProjectTasks");
 
             migrationBuilder.DropTable(
                 name: "Resources");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
         }
     }
 }

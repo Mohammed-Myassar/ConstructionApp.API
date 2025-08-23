@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ConstructionContext))]
-    [Migration("20250820221542_Initiall")]
-    partial class Initiall
+    [Migration("20250823065451_AddEntry_IsDeleteToSoftDelete")]
+    partial class AddEntry_IsDeleteToSoftDelete
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,9 @@ namespace Data.Migrations
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -184,7 +187,10 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ConstructionProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectTaskId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("QuantityUsed")
@@ -198,7 +204,9 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectId");
+                    b.HasIndex("ConstructionProjectId");
+
+                    b.HasIndex("ProjectTaskId");
 
                     b.HasIndex("ResourceId");
 
@@ -236,9 +244,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.ResourceUsage", b =>
                 {
-                    b.HasOne("Domain.Entities.ConstructionProject", "Project")
+                    b.HasOne("Domain.Entities.ConstructionProject", null)
                         .WithMany("ResourceUsage")
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("ConstructionProjectId");
+
+                    b.HasOne("Domain.Entities.ProjectTask", "ProjectTask")
+                        .WithMany()
+                        .HasForeignKey("ProjectTaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -248,7 +260,7 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Project");
+                    b.Navigation("ProjectTask");
 
                     b.Navigation("Resource");
                 });
