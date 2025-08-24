@@ -40,20 +40,22 @@ namespace ConstructionApp
                 Console.WriteLine("5. Record Resource Usage");
                 Console.WriteLine("6. Record Payment Transaction");
                 Console.WriteLine("7. View Projects");
+                Console.WriteLine("8. Modify informations Project");
                 Console.WriteLine("0. Exit");
                 Console.Write("Choose an option: ");
 
-                var choice = Console.ReadLine();
+                byte choice = Convert.ToByte(Console.ReadLine());
                 switch (choice)
                 {
-                    case "1": CreateProject(); break;
-                    case "2": CreateTask(); break;
-                    case "3": CreateEmployee(); break;
-                    case "4": CreateResource(); break;
-                    //case "5": RecordResourceUsage(); break;
-                    case "6": RecordPaymentTransaction(); break;
-                    case "7": ViewProjects(); break;
-                    case "0": return;
+                    case 1: CreateProject(); break;
+                    case 2: CreateTask(); break;
+                    case 3: CreateEmployee(); break;
+                    case 4: CreateResource(); break;
+                    case 5: RecordResourceUsage(); break;
+                    case 6: RecordPaymentTransaction(); break;
+                    case 7: ViewProjects(); break;
+                    case 8: ModifyInfoProject(); break;
+                    case 0: return;
                     default: Console.WriteLine("Invalid option."); break;
                 }
             }
@@ -95,7 +97,10 @@ namespace ConstructionApp
             Console.Write("Enter project start date (yyyy-mm-dd): ");
             DateTime startDate = DateTime.Parse(Console.ReadLine());
 
-            _projectService.AddProject(name, budget, startDate);
+            if (Helpers.IsValidValue(name, budget, startDate))
+                _projectService.AddProject(name, budget, startDate);
+            else
+                Console.WriteLine("Invalid project data, project not added.");
         }
 
         public void CreateTask()
@@ -110,7 +115,7 @@ namespace ConstructionApp
             string description = Console.ReadLine();
 
             Console.Write("Enter deadline (yyyy-mm-dd): ");
-            DateTime deadline = DateTime.Parse(Console.ReadLine());
+            DateTime dateline = DateTime.Parse(Console.ReadLine());
 
             Console.WriteLine("Select task status:");
             foreach (var status in Enum.GetValues(typeof(ProjectStatus)))
@@ -122,7 +127,59 @@ namespace ConstructionApp
             byte statusNumber = byte.Parse(Console.ReadLine());
             var taskStatus = (ProjectStatus)statusNumber;
 
-            _taskService.AddTask(projectId, name, description, deadline, taskStatus);
+            if (Helpers.IsValidValue(name, description, dateline, taskStatus))
+                _taskService.AddTask(projectId, name, description, dateline, taskStatus);
+            else
+                Console.WriteLine("Invalid task data, task not added.");
+        }
+
+        public void ModifyInfoProject()
+        {
+            int projectId = ChooseProject();
+            if (projectId == -1) return;
+
+            Console.WriteLine("1. Update Budget To Project");
+            Console.WriteLine("2. Update Task Status to Project");
+            Console.WriteLine("3. Delete Project");
+            Console.WriteLine("0. Exit");
+
+            byte choice = Convert.ToByte(Console.ReadLine());
+            switch (choice)
+            {
+                case 1: UpdateBudgetProject(projectId); break;
+                case 2: UpdateStatusTaskToProject(projectId); break;
+                case 3: DeleteProject(projectId); break;
+                case 0: return;
+                default: Console.WriteLine("Invalid option."); break;
+            }
+        }
+
+        public void UpdateBudgetProject(int id)
+        {
+            Console.Write("Enter new Budget: ");
+            decimal budget = Convert.ToDecimal(Console.ReadLine());
+
+            _projectService.UpdateProject(id, budget);
+        }
+
+        public void DeleteProject(int id)
+        {
+            _projectService.SoftDeleteProject(id);
+        }
+
+        public void UpdateStatusTaskToProject(int id)
+        {
+            Console.WriteLine("Select new task status:");
+            foreach (var status in Enum.GetValues(typeof(ProjectStatus)))
+            {
+                Console.WriteLine($"{(byte)status} - {status}");
+            }
+
+            Console.Write("Enter status number: ");
+            byte statusNumber = byte.Parse(Console.ReadLine());
+            var taskStatus = (ProjectStatus)statusNumber;
+
+            _taskService.UpdateTaskStatus(id, taskStatus);
         }
 
         public void CreateEmployee()
@@ -173,6 +230,26 @@ namespace ConstructionApp
             var unitCost = (UnitCost)unitNumber;
 
             _resourceService.AddResource(name, description, unitCost, quantity);
+        }
+
+        public void RecordResourceUsage()
+        {
+            int projectId = ChooseProject();
+            if (projectId == -1) return;
+
+            Console.Write("Enter task ID: ");
+            int taskId = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter resource ID: ");
+            int resourceId = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter quantity: ");
+            decimal quantity = Convert.ToDecimal(Console.ReadLine());
+
+            Console.Write("Enter usage date (yyyy-mm-dd): ");
+            DateTime date = DateTime.Parse(Console.ReadLine());
+
+            _resourceService.AddResourceUsage(taskId, resourceId, quantity, date);
         }
 
         public void RecordPaymentTransaction()

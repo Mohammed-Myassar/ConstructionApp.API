@@ -53,16 +53,13 @@ namespace Data.Services
             return project;
         }
 
-        public void UpdateProject(int id, string newName,
-            decimal newBudget, ProjectStatus status)
+        public void UpdateProject(int id, decimal newBudget)
         {
             using ConstructionContext context = new ConstructionContext();
             var project = context.Projects.Find(id);
             if (project != null)
             {
-                project.Name = newName;
                 project.Budget = newBudget;
-                project.Status = status;
                 context.SaveChanges();
                 Console.WriteLine("The project has been successfully modified.");
             }
