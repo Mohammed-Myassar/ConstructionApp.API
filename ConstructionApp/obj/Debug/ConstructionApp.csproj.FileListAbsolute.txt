@@ -1,7 +1,0 @@
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\bin\Debug\ConstructionApp.exe.config
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\bin\Debug\ConstructionApp.exe
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\bin\Debug\ConstructionApp.pdb
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\obj\Debug\ConstructionApp.csproj.AssemblyReference.cache
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\obj\Debug\ConstructionApp.csproj.CoreCompileInputs.cache
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\obj\Debug\ConstructionApp.exe
-C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\ConstructionApp\obj\Debug\ConstructionApp.pdb
