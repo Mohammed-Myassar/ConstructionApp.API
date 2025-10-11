@@ -10,3 +10,15 @@ C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solutio
 C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Domain\obj\Debug\net8.0\ref\Domain.dll
 C:\Users\MohammedMyassar\Desktop\ASP NET Course\Projects\ConstructionApp\Solution1\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\MohammedMyassar\Desktop\Construction Application\Domain\obj\Debug\net8.0\ref\Domain.dll

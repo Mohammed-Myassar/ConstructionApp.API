@@ -9,16 +9,13 @@
     public class Resource
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public UnitCost UnitCost { get; set; }
         public decimal Quantity { get; set; }
 
-        public List<ResourceUsage> ResourceUsages { get; set; }
+        public int ConstructionProjectId { get; set; }
 
-        public Resource()
-        {
-            ResourceUsages = new List<ResourceUsage>();
-        }
+        public ConstructionProject ConstructionProject { get; set; }
     }
 }

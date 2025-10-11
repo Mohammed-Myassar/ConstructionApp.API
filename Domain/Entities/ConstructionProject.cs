@@ -9,7 +9,7 @@
     public class ConstructionProject
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public decimal Budget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; } = DateTime.MinValue;
@@ -17,7 +17,7 @@
 
         public List<Employee> Employees { get; set; }
         public List<ProjectTask> ProjectTasks { get; set; }
-        public List<ResourceUsage> ResourceUsage { get; set; }
+        public List<Resource> Resources { get; set; }
         public List<PaymentTransaction> PaymentTransactions { get; set; }
 
         public bool IsDeleted { get; set; }
@@ -26,7 +26,7 @@
         {
             Employees = new List<Employee>();
             ProjectTasks = new List<ProjectTask>();
-            ResourceUsage = new List<ResourceUsage>();
+            Resources = new List<Resource>();
             PaymentTransactions = new List<PaymentTransaction>();
         }
     }
